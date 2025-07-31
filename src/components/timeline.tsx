@@ -19,7 +19,6 @@ import { useRouter } from "next/navigation";
 import { Textarea } from "./ui/textarea";
 import { surrealAuthConnection } from "@/lib/surreal";
 import { v7 as uuidV7 } from "uuid";
-import { RecordId } from "surrealdb";
 
 const createPostSchema = z.object({
   content: z.string().min(1, "Content is required"),
@@ -35,13 +34,11 @@ async function createPost(
     return { result: "error" };
   }
 
-  const { client, username } = connection;
+  const { client } = connection;
 
   try {
     await client.create("post", {
-      id: uuidV7().toString(),
-      createdAt: new Date(),
-      createdBy: new RecordId("user", username),
+      id: uuidV7(),
       content: data.content,
     });
 

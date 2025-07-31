@@ -18,7 +18,6 @@ import { Form, FormField } from "./ui/form";
 import { useRouter } from "next/navigation";
 import { Textarea } from "./ui/textarea";
 import { surrealAuthConnection } from "@/lib/surreal";
-import { v7 as uuidV7 } from "uuid";
 import { Uuid } from "surrealdb";
 
 const createPostSchema = z.object({
@@ -39,7 +38,7 @@ async function createPost(
 
   try {
     await client.create("post", {
-      id: new Uuid(uuidV7()),
+      id: Uuid.v7(),
       createdBy: id,
       content: data.content,
     });

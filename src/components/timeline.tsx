@@ -39,7 +39,7 @@ async function createPost(
 
   try {
     await client.create("post", {
-      id: Uuid(uuidV7()),
+      id: new Uuid(uuidV7()),
       createdBy: id,
       content: data.content,
     });

@@ -1,0 +1,5 @@
+{
+  "endpoint": "wss://proud-phoenix-06bsrcinshr0v7fb833p9fl4b0.aws-euw1.surreal.cloud",
+  "namespace": "example",
+  "database": "simple_sns"
+}

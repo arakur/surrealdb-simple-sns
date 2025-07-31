@@ -37,7 +37,7 @@ async function fetchPosts(
   const { client } = connection;
 
   let query = `SELECT
-    id, content, createdAt, createdBy.{id, username, avatarImageId},
+    id, content, createdAt, createdBy.{id, username, displayName, avatarImageId},
     count(<- replied) as numReplies,
     (SELECT id, kind, in.{username} as reactedBy FROM <- reacted) as reactions
     FROM post

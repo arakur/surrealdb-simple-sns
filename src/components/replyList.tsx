@@ -37,7 +37,7 @@ async function fetchReplies(
   const { client } = connection;
 
   let query = `SELECT
-    id, content, createdAt, createdBy.{id, username, avatarImageId},
+    id, content, createdAt, createdBy.{id, username, displayName, avatarImageId},
     -> replied -> post as replyTo,
     (SELECT id, kind, in.{username} as reactedBy FROM <- reacted) as reactions
     FROM reply

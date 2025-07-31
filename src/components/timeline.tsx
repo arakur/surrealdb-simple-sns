@@ -34,11 +34,12 @@ async function createPost(
     return { result: "error" };
   }
 
-  const { client } = connection;
+  const { client, id } = connection;
 
   try {
     await client.create("post", {
       id: uuidV7(),
+      createdBy: id,
       content: data.content,
     });
 
